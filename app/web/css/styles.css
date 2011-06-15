@@ -1,0 +1,15 @@
+td.date-tooltip  {background: #EFB34A}
+td.date-tooltip  a {background: #EFB34A}
+h2 {font: italic 24px/35px Georgia,"Times New Roman","Bitstream Charter",Times,serif;}
+span.delete {color: #21759B;cursor: pointer;}
+.event-description {width: 600px;height: 200px;}
+.simplemodal-container {height:310px;}
+.entry {margin:10px 0 35px;}
+.entry-image {display:table-cell;}
+.entry-info {display:table-cell;vertical-align:top;padding:0 0 0 15px;}
+.entry-info-description {margin-top:10px;}
+#description {width:100%;min-height:500px;}
+.edit input {width:300px;}
+.field {padding: 5px;}
+.entry-title .scores, #raty {width: inherit !important; }
+.note{color:#9F9F9F;font-size:11px;}

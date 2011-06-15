@@ -1,0 +1,3 @@
+<Files db.config>
+Deny from all
+</Files>
