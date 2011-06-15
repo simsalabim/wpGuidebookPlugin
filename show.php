@@ -4,15 +4,6 @@ require_once 'app/models/Wall.php';
 require_once 'app/models/Rateable.php';
 require_once 'app/core/Template.php';
 
-$admin = false;
-foreach ($_COOKIE as $name => $value) {
-  if (substr_count($name, 'wordpress_logged_in')) {
-    if (substr_count($value, 'admin')) {
-      $admin = true;
-    }
-  }
-}
-
 $entryRecord = new Entry();
 $wallRecord = new Wall();
 $rateableRecord = new Rateable();
@@ -62,7 +53,7 @@ $tpl->assign(array(
   'plugin_dir' => basename(dirname(__FILE__)),
   'action' => $action,
   'rating' => $rating,
-  'admin' => $admin,
+  'admin' => current_user_can('manage_options'),
   'method' => $method,
   'walls' => $walls,
   'wallId' => $wallId

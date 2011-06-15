@@ -6,14 +6,8 @@
  */
 
 $uri = $_SERVER['REQUEST_URI'];
-$admin = false;
-foreach ($_COOKIE as $name => $value) {
-  if (substr_count($name, 'wordpress_logged_in')) {
-    if (substr_count($value, 'admin')) {
-      $admin = true;
-    }
-  }
-}
+$admin = current_user_can('manage_options');
+
 if (preg_match('#/?guidebook/?$#', $uri)) {
   require_once(dirname(__FILE__) . '/../../plugins/wpGuidebookPlugin/list_walls.php');
  } elseif (preg_match('#/?guidebook/(\d+)/?$#', $uri, $matches)) {

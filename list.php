@@ -7,15 +7,6 @@ $uri = $_SERVER['REQUEST_URI'];
 preg_match('#/?guidebook/(\d+)/?$#', $uri, $matches);
 $wallId = $matches[1];
 
-$admin = false;
-foreach ($_COOKIE as $name => $value) {
-  if (substr_count($name, 'wordpress_logged_in')) {
-    if (substr_count($value, 'admin')) {
-      $admin = true;
-    }
-  }
-}
-
 $entryRecord = new Entry();
 $rateableRecord = new Rateable();
 $rateableType = $entryRecord->getTableName();
@@ -26,10 +17,10 @@ foreach ($entries as $key => $entry) {
 
 $tpl = new Template('views/list');
 $tpl->assign(array(
-      'entries' => $entries,
-	  'plugin_dir' => basename(dirname(__FILE__)),
-	  'admin' => $admin
-    ));
-	
+  'entries' => $entries,
+  'plugin_dir' => basename(dirname(__FILE__)),
+  'admin' => current_user_can('manage_options')
+));
+
 $tpl->render();
 
